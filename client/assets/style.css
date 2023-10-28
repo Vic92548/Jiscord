@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, "Segoe UI Light", Ubuntu, Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    font-size: 22px;
+}
+
+#connection-dialog {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000a0;
+}
+
+#connection-dialog dialog {
+    border: none;
+    border-radius: 1rem;
+    margin: auto;
+    padding: 1.3rem;
+    text-align: center;
+}
+
+#connection-form {
+    padding: 1.3rem 0 0;
+    gap: 0 1rem;
+    display: grid;
+    grid-template-areas: "address-label . port-label ." "address-input spacer port-input submit-button";
+}
+
+#connection-form input {
+    padding: 0.3rem;
+    border: 2.3px solid black;
+    border-radius: 0.3rem;
+}
+
+#connection-form input:valid:not(#connection-form_submit) {
+    border-color: hsl(120, 100%, 50%);
+}
+
+#connection-form input:invalid {
+    border-color: hsl(0, 100%, 50%);
+}
+
+#connection-form input:placeholder-shown:not(#connection-form_submit) {
+    border-color: black;
+}
+
+#connection-form_submit {
+    background-color: white;
+    cursor: pointer;
+}
+
+#connection-form_submit:hover {
+    background-color: hsl(0, 0%, 90%);
+}
