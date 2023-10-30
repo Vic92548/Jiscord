@@ -2,13 +2,39 @@
     <head>
         <title>Jiscord</title>
         <link rel="stylesheet" href="style.css" />
+        <script src="script.js" defer></script>
+        <!--script src="testing-script.js" defer></script-->
     </head>
     <body>
+        <div id="messageHistory">
+            <div>
+                <div class="author"></div>
+                <div class="time"></div>
+                <div class="content"></div>
+            </div>
+        </div>
+        <div id="bar">
+            <input
+                type="text"
+                name="message"
+                id="inputMessage"
+                placeholder="Envoyez un message"
+            />
+            <button onclick="sendMessage(document.querySelector('#bar input'))">
+                <img src="media/send.svg" alt="send" title="Envoyer" /></button
+            ><button onclick="toggleModal()">
+                <img
+                    src="media/server.svg"
+                    alt="change server"
+                    title="Changer le serveur"
+                />
+            </button>
+        </div>
         <div id="connection-dialog">
-            <dialog open="">
+            <dialog>
                 <h2>Bienvenue !</h2>
                 <p>Renseigner le serveur auquel connecter</p>
-                <form method="dialog" id="connection-form">
+                <form id="connection-form" method="dialog">
                     <label for="address" style="grid-area: address-label"
                         >Adresse</label
                     >
@@ -35,13 +61,16 @@
                         name="port"
                         style="grid-area: port-input"
                     />
-                    <input
-                        type="submit"
-                        value="Connecter"
+                    <button
+                        type="button"
                         style="grid-area: submit-button"
                         id="connection-form_submit"
-                    />
+                        onclick="formSubmit()"
+                    >
+                        Connecter
+                    </button>
                 </form>
+                <p></p>
             </dialog>
         </div>
     </body>
