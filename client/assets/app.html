@@ -1,13 +1,77 @@
 <html>
-  <head>
-    <title>Jiscord</title>
-    <style>
-    body {
-      font-family: -apple-system, 'Segoe UI Light', Ubuntu, Arial, sans-serif;
-    }
-    </style>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+    <head>
+        <title>Jiscord</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js" defer></script>
+        <!--script src="testing-script.js" defer></script-->
+    </head>
+    <body>
+        <div id="messageHistory">
+            <div>
+                <div class="author"></div>
+                <div class="time"></div>
+                <div class="content"></div>
+            </div>
+        </div>
+        <div id="bar">
+            <input
+                type="text"
+                name="message"
+                id="inputMessage"
+                placeholder="Envoyez un message"
+            />
+            <button onclick="sendMessage(document.querySelector('#bar input'))">
+                <img src="media/send.svg" alt="send" title="Envoyer" /></button
+            ><button onclick="toggleModal()">
+                <img
+                    src="media/server.svg"
+                    alt="change server"
+                    title="Changer le serveur"
+                />
+            </button>
+        </div>
+        <div id="connection-dialog">
+            <dialog>
+                <h2>Bienvenue !</h2>
+                <p>Renseigner le serveur auquel connecter</p>
+                <form id="connection-form" method="dialog">
+                    <label for="address" style="grid-area: address-label"
+                        >Adresse</label
+                    >
+                    <input
+                        type="text"
+                        minlength="7"
+                        maxlength="15"
+                        size="15"
+                        pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"
+                        placeholder="xxx.xxx.xxx.xxx"
+                        name="address"
+                        style="grid-area: address-input"
+                    />
+                    <p style="grid-area: spacer">:</p>
+                    <label for="port" style="grid-area: port-label">Port</label>
+                    <input
+                        type="text"
+                        minlength="1"
+                        maxlength="4"
+                        size="4"
+                        pattern="^\d{1,4}$"
+                        placeholder="xxxx"
+                        value="8080"
+                        name="port"
+                        style="grid-area: port-input"
+                    />
+                    <button
+                        type="button"
+                        style="grid-area: submit-button"
+                        id="connection-form_submit"
+                        onclick="formSubmit()"
+                    >
+                        Connecter
+                    </button>
+                </form>
+                <p></p>
+            </dialog>
+        </div>
+    </body>
 </html>

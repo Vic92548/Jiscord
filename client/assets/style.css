@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, "Segoe UI Light", Ubuntu, Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    font-size: 22px;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+#connection-dialog {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000a0;
+    position: fixed;
+    top: 0;
+}
+
+#connection-dialog dialog {
+    border: none;
+    border-radius: 1rem;
+    margin: auto;
+    padding: 1.3rem;
+    text-align: center;
+    background-color: white;
+}
+
+#connection-form {
+    padding: 1.3rem 0 0;
+    gap: 0 1rem;
+    display: grid;
+    grid-template-areas: "address-label . port-label ." "address-input spacer port-input submit-button";
+}
+
+#connection-form input,
+#connection-form button {
+    padding: 0.3rem;
+    border: 2.3px solid black;
+    border-radius: 0.3rem;
+}
+
+#connection-form input:valid {
+    border-color: hsl(120, 100%, 50%);
+}
+
+#connection-form input:invalid,
+#connection-form input:placeholder-shown {
+    border-color: hsl(0, 100%, 50%);
+}
+
+#connection-form_submit {
+    background-color: white;
+    cursor: pointer;
+}
+
+#connection-form_submit:hover {
+    background-color: hsl(0, 0%, 90%);
+}
+
+#bar {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+#inputMessage {
+    width: 100%;
+    padding: 1rem;
+}
+
+#bar button {
+    position: absolute;
+    right: 10px;
+    bottom: calc(1rem - 4px);
+}
+
+#bar button:nth-child(2) {
+    right: +48px;
+}
+
+#messageHistory {
+    padding-bottom: 3rem;
+}
+
+#messageHistory > div {
+    padding: 1rem;
+    line-break: anywhere;
+}
+
+.author,
+.time {
+    font-size: 0.7rem;
+}
