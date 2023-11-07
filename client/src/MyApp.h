@@ -7,6 +7,8 @@ class MyApp : public AppListener,
               public WindowListener,
               public LoadListener,
               public ViewListener {
+
+
 public:
   MyApp();
 

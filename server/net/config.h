@@ -24,7 +24,7 @@
 #endif
 
 #define PORT 8080
-#define MAX_CLIENTS 5
+#define MAX_CLIENTS 50
 #define BUFFER_SIZE 1024
 
 extern SOCKET clients[MAX_CLIENTS];

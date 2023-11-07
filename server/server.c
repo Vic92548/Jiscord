@@ -6,11 +6,16 @@
 #include "server.h"
 
 
-SOCKET clients[MAX_CLIENTS] = {INVALID_SOCKET};
+SOCKET clients[MAX_CLIENTS];
 
 #include "net/handle_client.h"
 
 int start_server() {
+
+    for (int i = 0; i < MAX_CLIENTS; ++i) {
+        clients[i] = INVALID_SOCKET;
+    }
+
     SOCKET server_socket, new_socket;
     struct sockaddr_in address;
     int addr_len = sizeof(address);
@@ -43,7 +48,16 @@ int start_server() {
         exit(EXIT_FAILURE);
     }
 
-    printf("Server listening on port %d\n", PORT);
+    struct sockaddr_in sin;
+    socklen_t len = sizeof(sin);
+    if (getsockname(server_socket, (struct sockaddr *)&sin, &len) == -1) {
+        perror("getsockname failed");
+        exit(EXIT_FAILURE);
+    } else {
+        char *ip = inet_ntoa(sin.sin_addr);
+        unsigned int port = ntohs(sin.sin_port);
+        printf("Server listening on %s:%u\n", ip, port);
+    }
 
     while (1) {
         if ((new_socket = accept(server_socket, (struct sockaddr *)&address, (socklen_t*)&addr_len)) < 0) {

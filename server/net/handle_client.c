@@ -12,6 +12,8 @@ DWORD WINAPI handle_client(LPVOID client_socket) {
     SOCKET socket = *(SOCKET*)client_socket;
     char buffer[BUFFER_SIZE];
 
+    printf("New thread ready!\n");
+
     while (1) {
         int bytes_received = recv(socket, buffer, BUFFER_SIZE, 0);
         if (bytes_received <= 0) {
