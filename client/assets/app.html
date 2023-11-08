@@ -15,7 +15,7 @@
 </div>
 <div id="bar">
     <input type="text" name="message" id="inputMessage" placeholder="Envoyez un message" />
-    <button onclick="sendMessage(document.querySelector('#bar input').value)">
+    <button onclick="send();">
         <img src="media/send.svg" alt="send" title="Envoyer" />
     </button>
     <button onclick="toggleModal()">
@@ -24,8 +24,8 @@
 </div>
 <div id="connection-dialog">
     <dialog>
-        <h2>Bienvenue !</h2>
-        <p>Renseigner le serveur auquel connecter</p>
+        <h2>Bienvenue sur Jiscord !</h2>
+        <p>Informations de connection au serveur:</p>
         <form id="connection-form" method="dialog">
             <label for="address" style="grid-area: address-label">Adresse</label>
             <input type="text" minlength="7" maxlength="15" size="15"

@@ -5,7 +5,23 @@ function toggleModal() {
     console.log("toggled ! by");
 }
 
+document.body.addEventListener('keypress', function (e) {
+    // It's a good practice to use `e.key` as it is more readable than `e.keyCode`
+    if (e.key === 'Enter') {
+        // Call the function you want to run when Enter is pressed
+        send();
+
+        // Prevent the default action to avoid submitting a form if your input is inside one
+        e.preventDefault();
+    }
+});
+
 let connected = false;
+
+function send(){
+    sendMessage(document.querySelector('#bar input').value);
+    document.querySelector('#bar input').value = '';
+}
 
 function receiveMessageFromServer() {
     // Call the native function `receiveMessage` which we have exposed to the JS context.
@@ -58,13 +74,19 @@ function processReceivedMessage(content, author = "") {
 
     messageList.appendChild(newMessage);
     window.scrollTo(0, document.body.scrollHeight);
+
+    // Assume you have an element with the ID 'messageHistory'
+    var messageHistory = document.getElementById('messageHistory');
+
+// Scroll to the bottom
+    messageHistory.scrollTop = messageHistory.scrollHeight;
 }
 
 function handleNewConnection() {
     const address = document.querySelector('#connection-form input[name="address"]').value;
     const port = document.querySelector('#connection-form input[name="port"]').value;
 
-    processReceivedMessage("Debug: handle new connection");
+    processReceivedMessage("Bienvenue sur Jiscord!");
 
     setInterval(() => {
         receiveMessageFromServer();
