@@ -2,6 +2,7 @@
 // Created by Victor on 26/10/2023.
 //
 
+#include <stdlib.h>
 #include "net/config.h"
 #include "server.h"
 

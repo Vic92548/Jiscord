@@ -2,6 +2,7 @@
 // Created by Victor on 26/10/2023.
 //
 
+#include <string.h>
 #include "handle_client.h"
 
 void sendMessage(char buffer[]){
